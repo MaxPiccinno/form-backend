@@ -20,11 +20,13 @@ const corsOptions = {
 //app.options("*", cors(corsOptions));
 
 app.use(bodyParser.json());
-app.use(cors())
+app.use(cors());
 
-const postsRoute = require('./routes/richieste');
+const postsRoute = require("./routes/richieste");
+const usersRoute = require("./routes/login");
 
 app.use("/richieste", postsRoute);
+app.use("/login", usersRoute);
 
 mongoose.connect(process.env.DBCONNECTION, () => {
   console.log("Connected!");
